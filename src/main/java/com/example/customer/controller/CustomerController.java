@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.example.customer.entity.Customer;
+import com.example.customer.entity.CustomerEntity;
 import com.example.customer.service.CustomerService;
 
 @RestController
@@ -20,21 +20,21 @@ public class CustomerController {
 
     // CREATE
     @PostMapping
-    public Customer createCustomer(@RequestBody Customer customer) {
+    public CustomerEntity createCustomer(@RequestBody CustomerEntity customer) {
         return service.createCustomer(customer);
     }
 
     // READ ALL
     @GetMapping
-    public List<Customer> getAllCustomers() {
+    public List<CustomerEntity> getAllCustomers() {
         return service.getAllCustomers();
     }
 
     // READ BY ID
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
+    public ResponseEntity<CustomerEntity> getCustomerById(@PathVariable Long id) {
 
-        Customer customer = service.getCustomerById(id);
+        CustomerEntity customer = service.getCustomerById(id);
 
         if (customer == null) {
             return ResponseEntity.notFound().build();
@@ -45,11 +45,11 @@ public class CustomerController {
 
     // UPDATE
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(
+    public ResponseEntity<CustomerEntity> updateCustomer(
             @PathVariable Long id,
-            @RequestBody Customer customer) {
+            @RequestBody CustomerEntity customer) {
 
-        Customer updatedCustomer = service.updateCustomer(id, customer);
+        CustomerEntity updatedCustomer = service.updateCustomer(id, customer);
 
         if (updatedCustomer == null) {
             return ResponseEntity.notFound().build();

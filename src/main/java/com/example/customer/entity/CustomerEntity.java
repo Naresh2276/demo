@@ -6,7 +6,7 @@ package com.example.customer.entity;
 	import jakarta.persistence.Id;
 
 	@Entity
-	public class Customer {
+	public class CustomerEntity {
 
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,10 +16,10 @@ package com.example.customer.entity;
 	    private String email;
 	    private String city;
 
-	    public Customer() {
+	    public CustomerEntity() {
 	    }
 
-	    public Customer(Long id, String name, String email, String city) {
+	    public CustomerEntity(Long id, String name, String email, String city) {
 	        this.id = id;
 	        this.name = name;
 	        this.email = email;

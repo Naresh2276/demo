@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.example.customer.entity.Customer;
+import com.example.customer.entity.CustomerEntity;
 import com.example.customer.repository.CustomerRepository;
 
 @Service
@@ -16,21 +16,21 @@ public class CustomerService {
         this.repository = repository;
     }
 
-    public Customer createCustomer(Customer customer) {
+    public CustomerEntity createCustomer(CustomerEntity customer) {
         return repository.save(customer);
     }
 
-    public List<Customer> getAllCustomers() {
+    public List<CustomerEntity> getAllCustomers() {
         return repository.findAll();
     }
 
-    public Customer getCustomerById(Long id) {
+    public CustomerEntity getCustomerById(Long id) {
         return repository.findById(id).orElse(null);
     }
 
-    public Customer updateCustomer(Long id, Customer customer) {
+    public CustomerEntity updateCustomer(Long id, CustomerEntity customer) {
 
-        Customer existingCustomer = repository.findById(id).orElse(null);
+        CustomerEntity existingCustomer = repository.findById(id).orElse(null);
 
         if (existingCustomer == null) {
             return null;
