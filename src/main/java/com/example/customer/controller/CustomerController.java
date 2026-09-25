@@ -18,7 +18,7 @@ public class CustomerController {
         this.service = service;
     }
 
-    // CREATE
+    // CREATEg
     @PostMapping
     public CustomerEntity createCustomer(@RequestBody CustomerEntity customer) {
         return service.createCustomer(customer);
