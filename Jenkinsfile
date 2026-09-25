@@ -2,15 +2,32 @@ pipeline {
     agent any
 
     stages {
+
         stage('Build') {
             steps {
                 sh 'chmod +x mvnw'
                 sh './mvnw clean package -DskipTests'
             }
         }
+
+        stage('Docker Build') {
+            steps {
+                sh 'docker build -t demo-app .'
+            }
+        }
+
+        stage('Stop Old Container') {
+            steps {
+                sh 'docker stop demo-container || true'
+                sh 'docker rm demo-container || true'
+            }
+        }
+
+        stage('Run Docker Container') {
+            steps {
+                sh 'docker run -d --name demo-container -p 8082:8082 demo-app'
+            }
+        }
     }
 }
 
-
-
-http://54.160.147.111:8081/job/demo-pipeline/6/console
