@@ -10,3 +10,7 @@ pipeline {
         }
     }
 }
+
+
+
+http://54.160.147.111:8081/job/demo-pipeline/6/console
